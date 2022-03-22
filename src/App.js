@@ -1,7 +1,15 @@
 import { useEffect } from 'react';
-
+import './App.css';
+import SearchIcon from './search.svg';
 // cdfaaf13
 const API_URL = 'http://www.omdbapi.com?apikey=cdfaaf13'
+const movie = {
+    "Poster": "https://m.media-amazon.com/images/M/MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    "Title": "Batman Begins",
+    "Type": "movie",
+    "Year": "2005",
+    "imdbID": "tt0372784"
+}
 
 const App = () => {
 
@@ -15,7 +23,33 @@ const App = () => {
     }, []);
 
     return (
-        <h1>App</h1>
+        <div className='app'>
+            <h1>MovieLand</h1>
+
+            <div className='search'>
+
+                <input type='text' placeholder='Search for a movie' value="Superman" onChange={() => { }} />
+                <img src={SearchIcon} alt='Search' onClick={() => { }} />
+
+            </div>
+
+            <div className='container'>
+                <div className='movie'>
+                    <div>
+                        <p>{movie.Year}</p>
+                    </div>
+                    <div>
+                        <img src={movie.Poster !== 'N/A' ? movie.Poster : 'https://via.placeholder.com/400'} alt={movie.Title} />
+                    </div>
+                    <div>
+                        <span>
+                            {movie.Type}
+                        </span>
+                        <h3>{movie.Title}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }
 
